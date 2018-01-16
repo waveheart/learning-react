@@ -7,6 +7,7 @@ import BodyIndex from './components/bodyindex.js'
 class Index extends React.Component {
 	constructor(props) {
 		super(props)
+		this.state = {type: 'React'}
 	}
 	
 	componentWillMount() {
@@ -21,7 +22,7 @@ class Index extends React.Component {
 		return (
 			<div>
 				<ComponentHeader></ComponentHeader>
-				<BodyIndex></BodyIndex>
+				<BodyIndex userid={123456} username="nick"></BodyIndex>
 				<ComponentFooter></ComponentFooter>
 			</div>
 		)

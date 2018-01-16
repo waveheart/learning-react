@@ -1,36 +1,74 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import ReactDOM from 'react-dom'
+
+import ReactMixin from 'react-mixin'
+import MixinLog from './mixin.js'
+
+import BodyChild from './bodychild.js'
+
+
+const defaultProps = {
+	username: '这是一个默认用户名'
+}
+
 
 class BodyIndex extends React.Component {
 	constructor(props) {
 		super(props)
-	}
-	
-	componentWillMount() {
-		console.log('body页面将要加载')
+		this.state = {userName: "parry", age: 20}
+		this.changeUserInfo = this.changeUserInfo.bind(this)
+		this.inputChange = this.inputChange.bind(this)
 	}
 
-	componentDidMount() {
-		console.log('body页面加载完成')
+	changeUserInfo() {
+		this.setState({
+			age: 50
+		})
+
+		// 第一种方式
+		// var mySubmitBtn = document.getElementById('submitButton')
+		// ReactDOM.findDOMNode(mySubmitBtn).style.color = "red"
+		
+		// 第二种方式
+		console.log(this.refs.submitButton)
+		this.refs.submitButton.style.color = "blue"
+		MixinLog.log()
+	}
+
+	inputChange(e) {
+		this.setState({
+			age: e.target.value
+		})
 	}
 
 	render() {
-		let userName = ''
-		let boolInput = false
-		let html = 'IMOOC&nbsp; LESSON'
+
+		// setTimeout(() => {
+		// 	this.setState({
+		// 		userName: 'imooc'
+		// 	})
+		// }, 1000)
 
 		return (
     		<div>
 				<h1>页面主题部分</h1>
-				<p>{userName === '' ? '空用户名' : userName}</p>
-				<p>
-					<input type="text" value="默认按钮" type="button" disabled={false}/>
-				</p>
-			{/*这是一段注*/}
-			<p>{html}</p> {/*需要进行Unicode转码*/}
-			<p dangerouslySetInnerHTML={{__html: html}}></p>
-    		</div>
+				<p>接收到的父页面的属性: userid: {this.props.userid}, username: {this.props.username} </p>
+				<p>{this.state.age}</p>
+				<BodyChild {...this.props} id={4} inputChange={this.inputChange}></BodyChild>
+				<input id="submitButton" ref="submitButton" type="button" value="提交" onClick={this.changeUserInfo}/>
+			</div>
 		)
 	}
 }
+
+BodyIndex.propTypes = {
+	userid: PropTypes.number.isRequired,
+	username: PropTypes.string
+}
+
+BodyIndex.defaultProps = defaultProps
+
+ReactMixin(BodyIndex.propTypes, MixinLog)
 
 export default BodyIndex
