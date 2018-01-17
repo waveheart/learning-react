@@ -7,6 +7,8 @@ import MixinLog from './mixin.js'
 
 import BodyChild from './bodychild.js'
 
+import DatePicker from 'antd/lib/date-picker'
+import 'antd/dist/antd.css'
 
 const defaultProps = {
 	username: '这是一个默认用户名'
@@ -55,6 +57,7 @@ class BodyIndex extends React.Component {
 				<h1>页面主题部分</h1>
 				<p>接收到的父页面的属性: userid: {this.props.userid}, username: {this.props.username} </p>
 				<p>{this.state.age}</p>
+				<DatePicker />
 				<BodyChild {...this.props} id={4} inputChange={this.inputChange}></BodyChild>
 				<input id="submitButton" ref="submitButton" type="button" value="提交" onClick={this.changeUserInfo}/>
 			</div>

@@ -37,14 +37,13 @@ module.exports = {
 			},
 			{
 				test: /(\.less|\.css)$/,
-				exclude:/node_modules/,
 				use: [
 					{
 						loader: 'style-loader'
 					}, 
 					{
-						loader: 'css-loader',
-						options: { modules: true }
+						loader: 'css-loader'
+						// options: { modules: true }
 					},
 					{
 						loader: 'less-loader'

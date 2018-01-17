@@ -22,8 +22,8 @@ class ComponentHeader extends React.Component {
 			header: {
 				backgroundColor: "#333",
 				color: "#fff",
-				// 如果一定要用CSS格式，要加引号,但是依然会有warning
-				"padding-top": (this.state.miniHeader) ? "3px" : "15px",
+				// 如果一定要用CSS格式，要加引号,"padding-top",但是依然会有warning
+				paddingTop: (this.state.miniHeader) ? "3px" : "15px",
 				paddingBottom: this.state.miniHeader ? "3px" : "15px"
 			}
 		}
