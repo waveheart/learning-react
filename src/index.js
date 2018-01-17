@@ -4,6 +4,8 @@ import ComponentHeader from './components/header.js'
 import ComponentFooter from './components/footer.js'
 import BodyIndex from './components/bodyindex.js'
 
+import "./css/style.css"
+
 class Index extends React.Component {
 	constructor(props) {
 		super(props)
